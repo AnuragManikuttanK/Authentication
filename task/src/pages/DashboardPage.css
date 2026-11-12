@@ -1,0 +1,147 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.dashboard-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eef2ff, #ffffff, #dbeafe);
+    padding: 40px 16px;
+}
+
+.dashboard-card {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.logout-btn {
+    background: #ef4444;
+    color: white;
+    padding: 11px 22px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+.profile-section {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-image,
+.profile-placeholder {
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    margin: auto;
+    object-fit: cover;
+    border: 4px solid #c7d2fe;
+}
+
+.profile-placeholder {
+    background: #e0e7ff;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.profile-section h2 {
+    font-size: 26px;
+    color: #1f2937;
+    margin-top: 18px;
+}
+
+.profile-section p {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+.profile-details {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-item {
+    border: 1px solid #e5e7eb;
+    padding: 18px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.profile-item:hover {
+    border-color: #818cf8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.profile-item p:first-child {
+    color: #9ca3af;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.profile-item p:last-child {
+    color: #1f2937;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.dashboard-footer {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 13px;
+    margin-top: 25px;
+}
+
+
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 20px 12px;
+    }
+
+    .dashboard-card {
+        padding: 22px 18px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 22px;
+    }
+
+    .logout-btn {
+        padding: 9px 14px;
+    }
+
+    .profile-section h2 {
+        font-size: 22px;
+    }
+}

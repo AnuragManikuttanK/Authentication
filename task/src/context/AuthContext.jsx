@@ -1,12 +1,6 @@
 
 import { createContext, useState, useEffect } from 'react';
-
-import {
-    getUserByEmail,
-    checkUsername as checkUsernameApi,
-    registerUser,
-    getUserById
-} from '../services/authApi';
+import {getUserByEmail,checkUsername as checkUsernameApi, registerUser,getUserById} from '../services/authApi';
 
 export const AuthContext = createContext();
 

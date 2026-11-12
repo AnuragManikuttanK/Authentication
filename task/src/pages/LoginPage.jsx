@@ -1,17 +1,13 @@
 
 import { useContext, useState } from 'react';
-
 import { AuthContext } from '../context/AuthContext';
-
 import { useNavigate, Link } from 'react-router-dom';
-
 import { validateLogin } from '../utils/validation';
-
+import './LoginPage.css';
 
 function LoginPage() {
 
     const { login } = useContext(AuthContext);
-
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -20,11 +16,8 @@ function LoginPage() {
     });
 
     const [errors, setErrors] = useState({});
-
     const [message, setMessage] = useState('');
-
     const [loading, setLoading] = useState(false);
-
 
     const handleChange = (e) => {
 
@@ -41,8 +34,6 @@ function LoginPage() {
         });
     };
 
-
-   
     const handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -74,27 +65,24 @@ function LoginPage() {
         }
     };
 
-
     return (
 
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+        <div className="login-container">
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md"
+                className="login-form"
             >
 
-                <h1 className="text-3xl font-bold text-center mb-6">
+                <h1>
                     Login
                 </h1>
 
-
                 {message && (
-                    <p className="text-red-500 mb-4">
+                    <p className="login-message">
                         {message}
                     </p>
                 )}
-
 
                 <input
                     type="email"
@@ -102,15 +90,14 @@ function LoginPage() {
                     placeholder="Email"
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full border p-3 rounded-lg mb-2"
+                    className="login-input"
                 />
 
                 {errors.email && (
-                    <p className="text-red-500 text-sm mb-3">
+                    <p className="login-error">
                         {errors.email}
                     </p>
                 )}
-
 
                 <input
                     type="password"
@@ -118,28 +105,27 @@ function LoginPage() {
                     placeholder="Password"
                     value={form.password}
                     onChange={handleChange}
-                    className="w-full border p-3 rounded-lg mb-2"
+                    className="login-input"
                 />
 
                 {errors.password && (
-                    <p className="text-red-500 text-sm mb-3">
+                    <p className="login-error">
                         {errors.password}
                     </p>
                 )}
 
-
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-blue-600 text-white p-3 rounded-lg mt-4 hover:bg-blue-700 disabled:opacity-50"
+                    className="login-button"
                 >
                     {loading ? 'Logging in...' : 'Login'}
                 </button>
 
-
-                <p className="text-center mt-5 text-gray-600">
+                <p className="login-footer">
                     Don't have an account?{' '}
-                    <Link to="/register" className="text-blue-600">
+
+                    <Link to="/register">
                         Register
                     </Link>
                 </p>

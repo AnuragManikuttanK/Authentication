@@ -1,17 +1,13 @@
 
 import { useContext, useState } from 'react';
-
 import { AuthContext } from '../context/AuthContext';
-
 import { useNavigate, Link } from 'react-router-dom';
-
 import { validateRegister } from '../utils/validation';
-
+import './RegisterPage.css';
 
 function RegisterPage() {
 
     const { register } = useContext(AuthContext);
-
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -22,13 +18,10 @@ function RegisterPage() {
     });
 
     const [errors, setErrors] = useState({});
-
     const [message, setMessage] = useState('');
-
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
-
         const { name, value } = e.target;
 
         setForm({
@@ -43,11 +36,9 @@ function RegisterPage() {
     };
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
 
         const validationErrors = validateRegister(form);
-
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length > 0) {
@@ -55,47 +46,39 @@ function RegisterPage() {
         }
 
         try {
-
             setLoading(true);
             setMessage('');
 
             await register(form);
 
             alert('Registration successful!');
-
             navigate('/login');
 
         } catch (error) {
-
             setMessage(error.response?.data?.message || error.message);
 
         } finally {
-
             setLoading(false);
         }
     };
 
-
     return (
-
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+        <div className="register-container">
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md"
+                className="register-form"
             >
 
-                <h1 className="text-3xl font-bold text-center mb-6">
+                <h1>
                     Create Account
                 </h1>
 
-
                 {message && (
-                    <p className="text-red-500 mb-4">
+                    <p className="register-message">
                         {message}
                     </p>
                 )}
-
 
                 <input
                     type="text"
@@ -103,15 +86,14 @@ function RegisterPage() {
                     placeholder="Username"
                     value={form.username}
                     onChange={handleChange}
-                    className="w-full border p-3 rounded-lg mb-2"
+                    className="register-input"
                 />
 
                 {errors.username && (
-                    <p className="text-red-500 text-sm mb-3">
+                    <p className="register-error">
                         {errors.username}
                     </p>
                 )}
-
 
                 <input
                     type="email"
@@ -119,15 +101,14 @@ function RegisterPage() {
                     placeholder="Email"
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full border p-3 rounded-lg mb-2"
+                    className="register-input"
                 />
 
                 {errors.email && (
-                    <p className="text-red-500 text-sm mb-3">
+                    <p className="register-error">
                         {errors.email}
                     </p>
                 )}
-
 
                 <input
                     type="password"
@@ -135,15 +116,14 @@ function RegisterPage() {
                     placeholder="Password"
                     value={form.password}
                     onChange={handleChange}
-                    className="w-full border p-3 rounded-lg mb-2"
+                    className="register-input"
                 />
 
                 {errors.password && (
-                    <p className="text-red-500 text-sm mb-3">
+                    <p className="register-error">
                         {errors.password}
                     </p>
                 )}
-
 
                 <input
                     type="text"
@@ -151,28 +131,27 @@ function RegisterPage() {
                     placeholder="Full Name"
                     value={form.fullName}
                     onChange={handleChange}
-                    className="w-full border p-3 rounded-lg mb-2"
+                    className="register-input"
                 />
 
                 {errors.fullName && (
-                    <p className="text-red-500 text-sm mb-3">
+                    <p className="register-error">
                         {errors.fullName}
                     </p>
                 )}
 
-
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-blue-600 text-white p-3 rounded-lg mt-4 hover:bg-blue-700 disabled:opacity-50"
+                    className="register-button"
                 >
                     {loading ? 'Registering...' : 'Register'}
                 </button>
 
-
-                <p className="text-center mt-5 text-gray-600">
+                <p className="register-footer">
                     Already have an account?{' '}
-                    <Link to="/login" className="text-blue-600">
+
+                    <Link to="/login">
                         Login
                     </Link>
                 </p>

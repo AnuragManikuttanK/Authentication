@@ -17,6 +17,15 @@
       "avatar": "",
       "createdAt": "2026-11-09T14:58:10.199Z",
       "id": "9cN9uH2271o"
+    },
+    {
+      "username": "Anurag",
+      "email": "anurag@gmail.com",
+      "password": "12345678",
+      "fullName": "Anurag K",
+      "avatar": "",
+      "createdAt": "2026-11-12T04:59:04.499Z",
+      "id": "0bqMmEQbUws"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,112 +1,86 @@
 
 import { useContext } from 'react';
-
 import { AuthContext } from '../context/AuthContext';
-
 import { useNavigate } from 'react-router-dom';
-
+import './DashboardPage.css';
 
 function DashboardPage() {
 
     const { user, logout } = useContext(AuthContext);
-
     const navigate = useNavigate();
 
-
     const handleLogout = () => {
-
         logout();
-
         navigate('/login');
     };
 
-
     return (
+        <div className="dashboard-container">
 
-        <div className="min-h-screen bg-gray-100 p-6">
+            <div className="dashboard-card">
 
-            <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                <div className="dashboard-header">
 
-                <div className="flex justify-between items-center mb-8">
-
-                    <h1 className="text-2xl font-bold">
-                        Dashboard
-                    </h1>
+                    <h1>Dashboard</h1>
 
                     <button
                         onClick={handleLogout}
-                        className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                        className="logout-btn"
                     >
                         Logout
                     </button>
 
                 </div>
 
-
-                <div className="text-center">
+                <div className="profile-section">
 
                     {user?.avatar ? (
 
                         <img
                             src={user.avatar}
                             alt="Profile"
-                            className="w-28 h-28 rounded-full mx-auto object-cover"
+                            className="profile-image"
                         />
 
                     ) : (
 
-                        <div className="w-28 h-28 rounded-full mx-auto bg-blue-100 flex items-center justify-center text-3xl font-bold text-blue-600">
+                        <div className="profile-placeholder">
                             {user?.fullName?.charAt(0)}
                         </div>
 
                     )}
 
-
-                    <h2 className="text-2xl font-bold mt-4">
+                    <h2>
                         Welcome, {user?.fullName}
                     </h2>
 
-                    <p className="text-gray-500 mt-2">
+                    <p>
                         Your profile information
                     </p>
 
                 </div>
 
+                <div className="profile-details">
 
-                <div className="mt-8 space-y-4">
-
-                    <div className="border p-4 rounded-lg">
-                        <p className="text-gray-500 text-sm">
-                            Username
-                        </p>
-
-                        <p className="font-semibold">
-                            {user?.username}
-                        </p>
+                    <div className="profile-item">
+                        <p>Username</p>
+                        <p>{user?.username}</p>
                     </div>
 
-
-                    <div className="border p-4 rounded-lg">
-                        <p className="text-gray-500 text-sm">
-                            Full Name
-                        </p>
-
-                        <p className="font-semibold">
-                            {user?.fullName}
-                        </p>
+                    <div className="profile-item">
+                        <p>Full Name</p>
+                        <p>{user?.fullName}</p>
                     </div>
 
-
-                    <div className="border p-4 rounded-lg">
-                        <p className="text-gray-500 text-sm">
-                            Email
-                        </p>
-
-                        <p className="font-semibold">
-                            {user?.email}
-                        </p>
+                    <div className="profile-item">
+                        <p>Email</p>
+                        <p>{user?.email}</p>
                     </div>
 
+                </div>
+
+                <div className="dashboard-footer">
+                    <p>Welcome to your dashboard!</p>
                 </div>
 
             </div>
